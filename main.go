@@ -1,12 +1,16 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"fmt"
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
 
 	r := gin.Default()
-	r.GET("/", func(c *gin.Context) {
-		c.String(200, "Hello wor3ld")
+	r.GET("/welcome", func(c *gin.Context) {
+		name := c.DefaultQuery("name", "jack")
+		c.String(200, fmt.Sprintf("hello: %s", name))
 	})
-	r.Run()
+	r.Run(":8083")
 }

@@ -11,14 +11,14 @@ import (
 
 func main() {
 	//1 List all carriers
-	var url string = "http://api.trackingmore.com/v2/carriers/"
-	var postData string = ""
-	httpDo(url, postData, "GET")
+	//var url string = "http://api.trackingmore.com/v2/carriers/"
+	//var postData string = ""
+	//httpDo(url, postData, "GET")
 
 	//2 detect a carriers by tracking number
-	//var url string ="http://api.trackingmore.com/v2/carriers/detect"
-	//var postData string ="{\"tracking_number\":\"EA152563251CN\"}"
-	//httpDo(url,postData,"POST")
+	var url string = "http://api.trackingmore.com/v2/carriers/detect"
+	var postData string = "{\"tracking_number\":\"LZ238688341CN\"}"
+	httpDo(url, postData, "POST")
 
 	//3 create a tracking number
 	//var url string ="http://api.trackingmore.com/v2/trackings/post"

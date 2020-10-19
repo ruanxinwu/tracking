@@ -103,11 +103,10 @@ func httpDo(url, postData, method string) {
 	req, err := http.NewRequest(method, url, strings.NewReader(postData))
 	if err != nil {
 		// handle error
-		fmt.Sprintf("a")
+		return
 	}
 	req.Header.Set("Content-Type", "application/json'")
-	//req.Header.Set("Trackingmore-Api-Key", "61a12315-3731-483c-b2c7-172b959ee170")
-	req.Header.Set("Trackingmore-Api-Key", "")
+	req.Header.Set("Trackingmore-Api-Key", "61a12315-3731-483c-b2c7-172b959ee170")
 	resp, err := client.Do(req)
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)

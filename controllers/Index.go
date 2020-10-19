@@ -10,9 +10,9 @@ type responseS interface {
 
 type ResponseSuccess struct {
 	Code int
-	msg  string
-	now  string
-	data []interface{}
+	Msg  string
+	Now  string
+	Data []interface{}
 }
 
 type ResponseFail struct {

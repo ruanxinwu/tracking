@@ -18,7 +18,7 @@ const (
 	ERROR   = 7
 )
 
-func result(code int, data interface{}, msg string, c *gin.Context) {
+func Result(code int, data interface{}, msg string, c *gin.Context) {
 	c.JSON(http.StatusOK, Response{
 		Code: code,
 		Msg:  msg,
@@ -28,29 +28,29 @@ func result(code int, data interface{}, msg string, c *gin.Context) {
 }
 
 func Ok(c *gin.Context) {
-	result(SUCCESS, map[string]interface{}{}, "操作成功", c)
+	Result(SUCCESS, map[string]interface{}{}, "操作成功", c)
 }
 
 func OkWithMessage(message string, c *gin.Context) {
-	result(SUCCESS, map[string]interface{}{}, message, c)
+	Result(SUCCESS, map[string]interface{}{}, message, c)
 }
 
 func OkWithData(data interface{}, c *gin.Context) {
-	result(SUCCESS, data, "操作成功", c)
+	Result(SUCCESS, data, "操作成功", c)
 }
 
 func OkWithDetailed(data interface{}, message string, c *gin.Context) {
-	result(SUCCESS, data, message, c)
+	Result(SUCCESS, data, message, c)
 }
 
 func Fail(c *gin.Context) {
-	result(ERROR, map[string]interface{}{}, "操作失败", c)
+	Result(ERROR, map[string]interface{}{}, "操作失败", c)
 }
 
 func FailWithMessage(message string, c *gin.Context) {
-	result(ERROR, map[string]interface{}{}, message, c)
+	Result(ERROR, map[string]interface{}{}, message, c)
 }
 
 func FailWithDetailed(data interface{}, message string, c *gin.Context) {
-	result(ERROR, data, message, c)
+	Result(ERROR, data, message, c)
 }

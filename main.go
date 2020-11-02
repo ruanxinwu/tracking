@@ -1,16 +1,22 @@
 package main
 
 import (
-	"tracking/routers"
+	"tracking/core"
+	"tracking/global"
+	"tracking/initialize"
 )
 
 func main() {
+	switch global.GVA_CONFIG.System.DbType {
+	case "mysql":
+		initialize.Mysql()
+	default:
+		initialize.Mysql()
+	}
 
-	//r := gin.Default()
-	//r.GET("/welcome", func(c *gin.Context) {
-	//	name := c.DefaultQuery("name", "jack")
-	//	c.String(200, fmt.Sprintf("hello: %s", name))
-	//})
-	r := routers.SetupRouter()
-	r.Run(":8083")
+	initialize.DBTables()
+
+	// 结束关闭数据库链接
+	defer global.GVA_DB.Close()
+	core.RunWindowsServer()
 }
